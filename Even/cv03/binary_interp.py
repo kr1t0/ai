@@ -18,8 +18,8 @@ def function(img, parm):
                 src_y0 = int(np.floor(src_y))
                 src_y1 = min(src_y0, src_w - 1)
 
-                temp0 = (src_x - src_x0)* img[src_x0][src_y1][i] + (src_x1-src_x)*img[src_x0][src_y1][i]
-                temp1 = (src_x - src_x0)* img[src_x1][src_y1][i] + (src_x1-src_x)*img[src_x1][src_y1][i]
+                temp0 = (src_x - src_x0)* img[src_x1][src_y0][i] + (src_x1-src_x)*img[src_x0][src_y0][i]
+                temp1 = (src_x - src_x0)* img[src_x1][src_y1][i] + (src_x1-src_x)*img[src_x0][src_y1][i]
 
                 dst_img[dst_x][dst_y][i] = int((src_x1-src_x)*temp0 + (src_x - src_x0)*temp1)
 
@@ -27,7 +27,7 @@ def function(img, parm):
 
 img = cv2.imread("my.png")
 
-zoom = function(img, (20,20,3))
+zoom = function(img, (600,600,3))
 
 cv2.imshow("binary",zoom)
 cv2.imshow("src",img)
